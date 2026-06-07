@@ -6,7 +6,7 @@ const app = express();
 // Use SvelteKit handler (includes SSE endpoint at /api/metrics)
 app.use(handler);
 
-const PORT = 9000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 9080;
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);

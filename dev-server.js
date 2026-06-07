@@ -616,11 +616,13 @@ async function broadcastMetrics() {
 setInterval(broadcastMetrics, UPDATE_INTERVAL);
 
 async function startDevServer() {
+  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 9080;
+
   // Create Vite dev server with middleware mode
   const vite = await createServer({
     server: {
       host: '0.0.0.0',
-      port: 9000,
+      port: PORT,
       strictPort: true,
       middlewareMode: true
     }
@@ -654,12 +656,12 @@ async function startDevServer() {
   app.use(vite.middlewares);
 
   // Start server
-  const server = app.listen(9000, '0.0.0.0', () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log('');
     console.log('\x1b[32m%s\x1b[0m', '  ➜ DGX Spark Status Server');
-    console.log('  \x1b[36m%s\x1b[0m', `Local:   http://localhost:9000/`);
-    console.log('  \x1b[36m%s\x1b[0m', `Network: http://0.0.0.0:9000/`);
-    console.log('  \x1b[33m%s\x1b[0m', `SSE Endpoint: http://0.0.0.0:9000/api/metrics`);
+    console.log('  \x1b[36m%s\x1b[0m', `Local:   http://localhost:${PORT}/`);
+    console.log('  \x1b[36m%s\x1b[0m', `Network: http://0.0.0.0:${PORT}/`);
+    console.log('  \x1b[33m%s\x1b[0m', `SSE Endpoint: http://0.0.0.0:${PORT}/api/metrics`);
     console.log('');
   });
 }

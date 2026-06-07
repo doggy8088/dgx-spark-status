@@ -3,7 +3,7 @@
 # Configuration
 SESSION_NAME="dgx-spark-status"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PORT=9000
+PORT=${PORT:-9080}
 
 # Load nvm if available
 export NVM_DIR="$HOME/.nvm"
@@ -64,7 +64,7 @@ else
     # Start tmux session in the foreground, running the command directly
     # When npm exits (via Ctrl+C), the session automatically closes
     # Load nvm in the tmux session before running npm
-    tmux new-session -s "$SESSION_NAME" "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"\$NVM_DIR/nvm.sh\" ] && source \"\$NVM_DIR/nvm.sh\" && npm run dev"
+    tmux new-session -s "$SESSION_NAME" "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"\$NVM_DIR/nvm.sh\" ] && source \"\$NVM_DIR/nvm.sh\" && PORT=$PORT npm run dev"
 
     # Clean up after tmux exits
     echo ""

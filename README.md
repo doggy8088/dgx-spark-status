@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-Dashboard will be available at `http://localhost:9000`
+Dashboard will be available at `http://localhost:9080`
 
 ### Production
 
@@ -73,10 +73,14 @@ const UPDATE_INTERVAL = 1000; // milliseconds
 ```
 
 ### Port
-Development server runs on port 9000 by default. Change in `dev-server.js`:
-```javascript
-server: { host: '0.0.0.0', port: 9000 }
+Development server runs on port `9080` by default.
+
+You can override the port by setting the `PORT` environment variable:
+```bash
+PORT=9080 npm run dev
 ```
+
+Or configure it in `dev-server.js` or `vite.config.js`.
 
 ### Inference Engines
 Configure endpoints in `dev-server.js`:
@@ -172,7 +176,7 @@ npm install
 npm run dev
 ```
 
-開啟瀏覽器前往 `http://localhost:9000` 即可使用。
+開啟瀏覽器前往 `http://localhost:9080` 即可使用。
 
 ## 硬體環境
 
