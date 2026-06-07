@@ -36,6 +36,8 @@ Real-time system monitoring dashboard for NVIDIA DGX Spark (GB10) with comprehen
 
 ## Quick Start
 
+### Development
+
 ```bash
 # Clone the repository
 git clone https://github.com/thx0701/dgx-spark-status.git
@@ -50,18 +52,25 @@ npm run dev
 
 Dashboard will be available at `http://localhost:9080`
 
-### Production
+### Production (One-liner install)
 
+You can download, extract, and start the latest production release with a single command:
 ```bash
-npm run build
-node server.js
+curl -L https://github.com/doggy8088/dgx-spark-status/releases/latest/download/dgx-spark-status.zip -o dgx-spark-status.zip && unzip dgx-spark-status.zip -d dgx-spark-status && rm dgx-spark-status.zip && cd dgx-spark-status && make start
 ```
 
-### Systemd Service
-
+Or install it as a systemd service:
 ```bash
-sudo cp dgx-dashboard.service /etc/systemd/system/
-sudo systemctl enable --now dgx-dashboard
+curl -L https://github.com/doggy8088/dgx-spark-status/releases/latest/download/dgx-spark-status.zip -o dgx-spark-status.zip && unzip dgx-spark-status.zip -d dgx-spark-status && rm dgx-spark-status.zip && cd dgx-spark-status && sudo make systemd-install
+```
+
+### Manual Production Control
+Using the packaged `Makefile`, you can manage the application manually:
+```bash
+make start       # Install dependencies & start server in background
+make status      # Check server status
+make stop        # Stop background server
+make restart     # Restart server
 ```
 
 ## Configuration
@@ -169,6 +178,7 @@ NVIDIA DGX Spark (GB10) 即時系統監控面板，提供完整的 GPU、CPU、�
 
 ## 快速開始
 
+### 開發環境
 ```bash
 git clone https://github.com/thx0701/dgx-spark-status.git
 cd dgx-spark-status
@@ -177,6 +187,27 @@ npm run dev
 ```
 
 開啟瀏覽器前往 `http://localhost:9080` 即可使用。
+
+### 生產環境與部署 (一鍵安裝)
+
+您可以透過以下單行指令下載、解壓並啟動最新的生產環境版本：
+```bash
+curl -L https://github.com/doggy8088/dgx-spark-status/releases/latest/download/dgx-spark-status.zip -o dgx-spark-status.zip && unzip dgx-spark-status.zip -d dgx-spark-status && rm dgx-spark-status.zip && cd dgx-spark-status && make start
+```
+
+或者直接將其安裝為 systemd 服務：
+```bash
+curl -L https://github.com/doggy8088/dgx-spark-status/releases/latest/download/dgx-spark-status.zip -o dgx-spark-status.zip && unzip dgx-spark-status.zip -d dgx-spark-status && rm dgx-spark-status.zip && cd dgx-spark-status && sudo make systemd-install
+```
+
+### 手動生產控制
+使用隨附的 `Makefile` 手動管理服務：
+```bash
+make start       # 安裝依賴並於背景啟動伺服器
+make status      # 檢查伺服器運行狀態
+make stop        # 停止背景運行的伺服器
+make restart     # 重啟伺服器
+```
 
 ## 硬體環境
 
