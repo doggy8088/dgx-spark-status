@@ -37,7 +37,7 @@ jobs:
 
       - name: Create Release Archive
         run: |
-          zip -r dgx-spark-status.zip . -x "node_modules/*" -x ".git/*" -x ".github/*" -x ".svelte-kit/*"
+          zip -r dgx-spark-status.zip build package.json server.js
 
       - name: Upload Release Archive
         uses: actions/upload-artifact@v4
