@@ -40,7 +40,7 @@ Real-time system monitoring dashboard for NVIDIA DGX Spark (GB10) with comprehen
 
 ```bash
 # Clone the repository
-git clone https://github.com/thx0701/dgx-spark-status.git
+git clone https://github.com/doggy8088/dgx-spark-status.git
 cd dgx-spark-status
 
 # Install dependencies
@@ -141,7 +141,7 @@ Ollama model management endpoint.
 ## Credits
 
 Originally created by [Phanes](https://github.com/Viroscope) @ [OnticEntia.ai](https://github.com/Viroscope)
-Extended with inference engine integration (llama.cpp, vLLM) and UI improvements by [thx0701](https://github.com/thx0701)
+Extended with inference engine integration (llama.cpp, vLLM) and UI improvements by [thx0701](https://github.com/thx0701) and CI/CD improved by [doggy8088](https://github.com/doggy8088)
 
 ## License
 
@@ -180,7 +180,7 @@ NVIDIA DGX Spark (GB10) 即時系統監控面板，提供完整的 GPU、CPU、�
 
 ### 開發環境
 ```bash
-git clone https://github.com/thx0701/dgx-spark-status.git
+git clone https://github.com/doggy8088/dgx-spark-status.git
 cd dgx-spark-status
 npm install
 npm run dev
@@ -218,4 +218,4 @@ make restart     # 重啟伺服器
 ## 致謝
 
 原始專案由 [Phanes](https://github.com/Viroscope) @ [OnticEntia.ai](https://github.com/Viroscope) 建立。
-推論引擎整合（llama.cpp、vLLM）及 UI 改進由 [thx0701](https://github.com/thx0701) 擴充。
+推論引擎整合（llama.cpp、vLLM）及 UI 改進由 [thx0701](https://github.com/thx0701) 擴充，CI/CD 由 [doggy8088](https://github.com/doggy8088) 改進。
