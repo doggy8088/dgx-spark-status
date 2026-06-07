@@ -1,12 +1,15 @@
-name: CI Build
+name: CI Build and Release
 
 on:
   push:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
-  build-and-upload:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,3 +44,20 @@ jobs:
         with:
           name: dgx-spark-status
           path: dgx-spark-status.zip
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Generate version tag using date, time, and run number
+          # e.g., v2026.06.08-run42
+          TAG_NAME="v$(date +'%Y.%m.%d')-run${{ github.run_number }}"
+          RELEASE_NAME="Release v$(date +'%Y.%m.%d') - Run ${{ github.run_number }}"
+          
+          echo "Creating release $RELEASE_NAME with tag $TAG_NAME"
+          
+          gh release create "$TAG_NAME" \
+            dgx-spark-status.zip \
+            --title "$RELEASE_NAME" \
+            --generate-notes \
+            --target master
